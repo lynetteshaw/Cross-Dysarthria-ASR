@@ -78,6 +78,9 @@ Considerations for agents: Train these agents using a balanced dataset. Small am
 
 
 ```python
+#Extract Features
+#Read features into dataframe
+
 # Classify using randomForest
 clf = RandomForestClassifier(n_estimators=50, max_depth=20, min_samples_split=2)
 clf.fit(X_tr, Y_tr)
@@ -113,7 +116,7 @@ Model parameters include things such as learning rate and optimizer for neural n
 
 ### 5) Assessment and Outcome Measures
 
-Since I am measuring multi-class classification, I will use unwieghted average recall (UAR) as my metric for evaluation. Additionally I will also be measuring pearson's correlation in order to see the impact of individual features.
+Since I am measuring multi-class classification, I will use unwieghted average recall (UAR) as my metric for evaluation. Additionally I will also be measuring pearson's correlation in order to see the impact of individual features and if the correlations of specific features are reasonable (i.e. negative correlation between speech rate and disease progression).
 
 &nbsp; 
 
@@ -122,6 +125,6 @@ Since I am measuring multi-class classification, I will use unwieghted average r
 
 _What parameters are you most interested in sweeping through? What value ranges do you expect to look at for your analysis?_
 
-I am most interested in sweeping through multiple different features and perhaps using feature selection in order to reduce overfitting and counteract the curse of dimensionality (overcomplciating my system). I expect specific features to perform better than others (i.e. expect speech rate extracted from transcripts to be more effective than acoustic features extracted acoustically since there is a lot more noise in acoustics. However, there is less assumptions and requirements (i.e. transcriptions) for acoustic-based features and hopefully they can provide a detailed account of specific patterns happening in speech.
+I will be sweeping through the the tunable parameters for optimizing my classifiers. However, I am most interested in sweeping through multiple different features and perhaps using feature selection in order to reduce overfitting and counteract the curse of dimensionality (overcomplciating my system). I expect specific features to perform better than others (i.e. expect speech rate extracted from transcripts to be more effective than acoustic features extracted acoustically since there is a lot more noise in acoustics. However, there is less assumptions and requirements (i.e. transcriptions) for acoustic-based features and hopefully they can provide a detailed account of specific patterns happening in speech.
 
 
