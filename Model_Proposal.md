@@ -20,6 +20,8 @@ My goal is to study whether specific audio cues and acoustic patterns can be ext
 ****
 ABM is perfect for this type of research as it helps explore the effectiveness of specific features captured. Building models such as Random Forest or Neural Networks exhibit the agent-based quality for ABM because each classifier can be thought of a specific agent in a system. The goal of these multi-agent systems is to provide class posteriors and hopefully correctly classify the class of the resulting test data using input features. I plan to have these agents "interact" together through ensembling, where each agent casts a vote on the specific class output and the majority vote is used as the final class output of the multiagent system. The advantage of this apporach is that more of the search space can be explored (through different parameters, initializations, etc.) through having multiple agents.
 
+*LS COMMENTS: Very interesting direction for this project! If you haven't already looked into "Learning Classifier Systems", the literature in that area might be of interest to you (though you by no means need to try a develop a full system for this course, unless you want to...ensemble methods will be close enough for our purposes). Interesting side note if you don't already know, John Holland who first laid these out in 1980 was a founder of Complex Systems here at Michigan :)*
+
 &nbsp; 
 ### Main Micro-level Processes and Macro-level Dynamics of Interest
 ****
@@ -35,6 +37,8 @@ I'm really interested in how these features change with respect to disease sever
 ### 1) Environment
 No environment. Maybe in my setup the environment is extracting features?
 Currently the features which I am investigating are called shapelets, which are pitch segments patterns that ideally cluster based on class (still researching this at the moment). My feature if this works will be the distance of a given test shapelet to the closest set of neighbors (k-NN) in the corresponding shapelet space. The downside: The time complexity for generating these shapelets is massive!
+
+*LS COMMENTS: Input data and data used to validate predictions is sometimes construed as being the environmental, albeit in a very abstract manner. Interesting hypothesis!*
 
 ```python
 
@@ -76,6 +80,7 @@ agent methods: init, fit, predict
 
 Considerations for agents: Train these agents using a balanced dataset. Small amounts of data is available for this research, investiagte methods such as K-Fold-Cross-Validation in order to cycle test/train data and maximize data available.
 
+*LS COMMENTS: good approach.*
 
 ```python
 #Extract Features
@@ -107,12 +112,16 @@ Step 6: repeat steps 1-5 for N agents
 step 7: Repeat steps 1-6 for M simulations
 
 &nbsp; 
+*LS COMMENTS: Solid setup. Will steps 1-2 be repeated multiple time to see if you get some convergence in which parameters to use? Also, see prior comment about learning classifier systems for potential inspiration on ways of having agents/classifiers interact with one another or selection of.*
+
 ### 4) Model Parameters and Initialization
 
 Refer to "Action and Interaction" above.
 Model parameters include things such as learning rate and optimizer for neural network classifiers and max tree depth for random forest classifiers.
 
 &nbsp; 
+
+*LS COMMENTS: Time allowing, you might also consider varying the number of individual classifiers you train as well.*
 
 ### 5) Assessment and Outcome Measures
 
@@ -127,4 +136,5 @@ _What parameters are you most interested in sweeping through? What value ranges 
 
 I will be sweeping through the the tunable parameters for optimizing my classifiers. However, I am most interested in sweeping through multiple different features and perhaps using feature selection in order to reduce overfitting and counteract the curse of dimensionality (overcomplciating my system). I expect specific features to perform better than others (i.e. expect speech rate extracted from transcripts to be more effective than acoustic features extracted acoustically since there is a lot more noise in acoustics. However, there is less assumptions and requirements (i.e. transcriptions) for acoustic-based features and hopefully they can provide a detailed account of specific patterns happening in speech.
 
+*LS COMMENTS: Solid setup! Look forward to seeing where this project goes. 19/20*
 
